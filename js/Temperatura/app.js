@@ -1,6 +1,12 @@
 var express = require('express');
 var http = require('http');
 
+
+var SerialPort = require('serialport');
+
+const Readline = require('@serialport/parser-readline');
+const port = new SerialPort('COM5');
+
 var app = express();
 
 const io = require('socket.io')(80);
@@ -12,6 +18,12 @@ app.get("/",function(req,res) {
 
 app.use(express.static('public'));
 //========================================================================================
+
+const parser = port.pipe(new Readline({ delimiter: '\r\n' }));
+
+var messageSocket
+
+
 io.on('connection', function (socket) {
   console.log("Connected succesfully to the socket ...");
 
@@ -24,10 +36,17 @@ io.on('connection', function (socket) {
 
   // Enviar noticias al socket
   socket.emit('news', news);
-
+  //borrar
   socket.on('my other event', function (data) {
-      console.log(data);
+      messageSocket = data;
+      //console.log(data);
   });
+});
+
+parser.on('data', function(data){
+  newData = parseFloat(data);
+  console.log(newData);
+  newData < 10 ? console.log(messageSocket) : console.log('muy lejos puños');
 });
 //==================================================================================================
 app.listen(8080);
