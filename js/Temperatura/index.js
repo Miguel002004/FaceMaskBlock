@@ -1,19 +1,12 @@
 var SerialPort = require('serialport');
 
+const Readline = require('@serialport/parser-readline')
+const port = new SerialPort('COM5')
 
-var serialPort = new SerialPort("COM5", {
-    baudRate: 9600,
-    parser: new SerialPort.parsers.Readline("\n")
-});
-
-var clearData = "";
-var readData = "";
-
-serialPort.on('open',function(){
-    console.log('open');
-    serialPort.on('data', function(data){
-        //console.log(data);
-        readData += data.toString();
-        console.log(readData);
-    });
+const parser = port.pipe(new Readline({ delimiter: '\r\n' }))
+var newData = 0.0
+parser.on('data', function(data){
+    newData = parseFloat(data);
+    console.log(newData);
+    newData < 10 ? console.log('muy cerca puños') : console.log('muy lejos puños');
 });
