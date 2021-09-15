@@ -1,5 +1,11 @@
+/*
 var dates = new Date(); 
 var fecha = `${dates.getDay()}-${dates.getMonth()}-${dates.getFullYear()}`;
+var hora = `${dates.getHours()}:${dates.getMinutes()}`; 
+*/
+
+var dates = new Date(); 
+var fecha = dates.get; 
 var hora = `${dates.getHours()}:${dates.getMinutes()}`; 
 
 //var fecha =  new Date().toISOString().slice(0, 19).replace('T', ' '); 
