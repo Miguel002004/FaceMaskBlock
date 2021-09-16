@@ -34,8 +34,9 @@ body {
     border: none;
     border-radius: 2em;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 17px;
     color: #323a60;
+    font-family: 'Nikoleta', sans-serif;
 }
 
 .encabezado input[type="button"]:hover {
@@ -83,6 +84,8 @@ body {
     border-radius: 2em;
     font-family: 'Nikoleta', sans-serif;        
     display: flex;
+    align-items: center;
+    text-align: center;
 }
 
 #label-container:nth-child(2) {
@@ -90,4 +93,25 @@ body {
     justify-content: space-evenly;
     align-items: center;
     font-family: 'Aovel Sans', sans-serif;
+}
+
+
+.resultados {
+    width: 300px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#btn-enviar {
+    margin-top: 10px;
+    width: 100px;
+    height: 40px;
+    background-color: #e5be51;
+    font-size: 17px;
+    font-family: 'Nikoleta', sans-serif;      
+    color: #323a60; 
+    font-weight: 700;
 }

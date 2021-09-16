@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <script src="/home/genaro_javier/Escritorio/Facemaskblock/FaceMaskBlock/app.js"></script>
     <title>Reconocimiento de cubrebocas</title>
 </head>
 
@@ -21,8 +22,10 @@
 
     <div class="contenedor">
         <div id="webcam-container"></div>
-        <div id="label-container"></div>
-        <input id="btn-iniciar" type="button" onclick="enviardatos()" value="Enviar">
+        <div class="resultados">
+            <div id="label-container"></div>
+            <input id="btn-enviar" type="button" onclick="imprimir();" value="Enviar">
+        </div>
     </div>
 
 
@@ -70,55 +73,17 @@
             await predict();
             window.requestAnimationFrame(loop);
         }
-<<<<<<< HEAD
 
         // run the webcam image through the image model
         async function predict() {
             // predict can take in an image, video or canvas html element
+            let valor; 
             const prediction = await model.predict(webcam.canvas);
             for (let i = 0; i < maxPredictions; i++) {
                 const classPrediction =
                     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-                labelContainer.childNodes[i].innerHTML = classPrediction;
+                    labelContainer.childNodes[i].innerHTML = classPrediction;
             }
-=======
-        document.getElementById("btn-iniciar").style.display = "none"; 
-    }
-
-    async function loop() {
-        webcam.update(); // update the webcam frame
-        await predict();
-        window.requestAnimationFrame(loop);
-    }
-
-    // run the webcam image through the image model
-    async function predict() {
-        // predict can take in an image, video or canvas html element
-        const prediction = await model.predict(webcam.canvas);
-        for (let i = 0; i < maxPredictions; i++) {
-            const classPrediction =
-                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-            
-            if(prediction[i].probability.toFixed(2) > 0.60){
-                labelContainer.childNodes[0].innerHTML = prediction[i].className;
-            }   
->>>>>>> 2a1e9e4d41a33aa8103b7fbc7e2e61fff00b9233
-        }
-
-        function enviardatos() {
-            let url = 'https://api.sheety.co/322189b5bb5fa6d394f7e68445d8cd79/datos/datosForm';
-            let body = {
-                datosForm: {
-                    porcentaje: 10,
-                    hora: 10,
-                    fecha: "10-10-10"
-                }
-            }
-            fetch(url, {method: 'POST', body: JSON.stringify(body)})
-                .then((response) => response.json())
-                .then(json => {
-                    console.log(json.datosForm);
-                });
         }
 
     </script>
