@@ -76,9 +76,6 @@
             // predict can take in an image, video or canvas html element
             const prediction = await model.predict(webcam.canvas);
             for (let i = 0; i < maxPredictions; i++) {
-                const classPrediction =
-                    prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-
                 if (prediction[i].probability.toFixed(2) > 0.60) {
                     labelContainer.childNodes[0].innerHTML = prediction[i].className;
                     sendMessage(prediction[i].className)
@@ -93,13 +90,7 @@
         var socket = io('http://localhost:80', { transports : ['websocket'] });
 
         socket.on('news', function (data) {
-            var div = document.getElementById("news-list");
             console.log("Rendering news : ", data);
-
-            for (var i = 0; i < data.length; i++) {
-                var newsItem = data[i];
-                div.innerHTML += "<h3>" + newsItem.title + ' <small>' + newsItem.date + "</small></h3><br>";
-            }
         });
         function sendMessage(message){
             socket.emit('my other event', message); 
