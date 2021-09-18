@@ -77,8 +77,8 @@
             const prediction = await model.predict(webcam.canvas);
             for (let i = 0; i < maxPredictions; i++) {
                 if (prediction[i].probability.toFixed(2) > 0.60) {
-                    labelContainer.childNodes[0].innerHTML = prediction[i].className;
-                    sendMessage(prediction[i].className)
+                    labelContainer.childNodes[0].innerHTML = (i == 1) ? 'Sin cubre bocas' : 'Con cubre bocas';
+                    sendMessage(prediction[i].className);
                 }
             }
         }
