@@ -1,6 +1,6 @@
 var express = require('express');
 var http = require('http');
-var sqlConnetcion = require('sqlConnetion')
+var sqlConnetcion = require('./sqlConnetion');
 
 var SerialPort = require('serialport');
 
@@ -46,7 +46,7 @@ io.on('connection', function (socket) {
 parser.on('data', function(data){
   newData = parseFloat(data);
   console.log(newData);
-  newData < 10 ? console.log(messageSocket) : console.log('muy lejos puños');
+  newData < 10 ? sqlConnetcion(messageSocket) : console.log('muy lejos puños');
 });
 //==================================================================================================
 app.listen(8080);
