@@ -1,0 +1,93 @@
+@import url('http://fonts.cdnfonts.com/css/nikoleta');
+@import url('http://fonts.cdnfonts.com/css/aovel-sans-2');
+
+
+
+
+body {
+    background-color: #58a6B0;
+}
+
+
+.encabezado {
+    margin: auto;
+    width: 700px;
+    height: 100px;
+    background-color: #e5be51;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.encabezado h1 {
+    font-family: 'Nikoleta', sans-serif;      
+    color: #323a60; 
+}
+
+.encabezado input[type="button"] {
+    width: 120px;
+    height: 30px;
+    appearance: none;
+    -webkit-appearance: none;
+    margin-top: -15px;
+    border: none;
+    border-radius: 2em;
+    cursor: pointer;
+    font-size: 12px;
+    color: #323a60;
+}
+
+.encabezado input[type="button"]:hover {
+    background-color: #323a60;
+    color: #f3ece1;
+}
+
+.contenedor {
+    margin: auto;
+    width: 700px;
+    height: 400px;
+    background-color: #323a60;
+    display: flex;    
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#webcam-container {
+    border: none;
+    border-radius: 2em;
+    background-color: #f3ece1;
+    width: 320px;
+    height: 320px;
+    margin: 10px;
+    display: flex;
+}
+
+#webcam-container:first-child {
+    margin: auto;
+    border: none;
+    border-radius: 2em;
+    padding: 15px;
+}
+
+#label-container {
+    padding: 10px;
+    margin: auto;
+    font-size: 20px;
+    width: 250px;
+    height: 100px;
+    background-color: #f3ece1;
+    border: none;
+    border-radius: 2em;
+    font-family: 'Nikoleta', sans-serif;        
+    display: flex;
+}
+
+#label-container:nth-child(2) {
+    color: #323a60;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: 'Aovel Sans', sans-serif;
+}
